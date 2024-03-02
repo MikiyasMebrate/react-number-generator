@@ -87,6 +87,56 @@ const HexaColorBody = () => {
   )
 }
 
+
+//Country 
+
+const tenHighestPopulation = [
+  { country: 'World', population: 7693165599 },
+  { country: 'China', population: 1377422166 },
+  { country: 'India', population: 1295210000 },
+  { country: 'United States of America', population: 323947000 },
+  { country: 'Indonesia', population: 258705000 },
+  { country: 'Brazil', population: 206135893 },
+  { country: 'Pakistan', population: 194125062 },
+  { country: 'Nigeria', population: 186988000 },
+  { country: 'Bangladesh', population: 161006790 },
+  { country: 'Russian Federation', population: 146599183 },
+  { country: 'Japan', population: 126960000 },
+]
+
+const SectionCountry = () => {
+  let worldPopulation = tenHighestPopulation[0].population
+  let formmatedCountry = tenHighestPopulation.map((item) => {
+    let percent = (item.population * 100)/worldPopulation
+    return (
+      <div className='row'>
+        <div className='col-2 text-start'>
+          {item.country}
+        </div>
+        <div className='col-8'>
+          <div className="progress m-2" style={{height : '30px'}}>
+            <div className="progress-bar  bg-warning  p-6" role="progressbar" style={{ width: percent+'%' }} aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100">{parseInt(percent)}%</div>
+          </div >
+        </div>
+        <div className='col-2 text-start'>
+          {item.population.toLocaleString()}
+        </div>
+      </div>
+    )
+  })
+  return (
+    <div className='text-center mt-5'>
+      <h3>World Population</h3>
+      <div className='container-xxl'>
+        {formmatedCountry}
+      </div>
+
+    </div>
+  )
+}
+
+
+
 const App = () => (
   <div className='m-5'>
     <Header />
@@ -94,6 +144,7 @@ const App = () => (
     <NumberGeneratorBody />
     <SectionHexaColor />
     <HexaColorBody />
+    <SectionCountry />
   </div>
 )
 
